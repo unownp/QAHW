@@ -18,11 +18,12 @@ public class AutomationPracticeFormTest {
     static void beforeAll() {
         Configuration.startMaximized = true;
         Configuration.holdBrowserOpen = true;
+        Configuration.baseUrl="https://demoqa.com";
     }
 
     @Test
     void practiceFormTest() {
-        open("https://demoqa.com/automation-practice-form");
+        open("/automation-practice-form");
 
         $("#firstName").setValue("Forrest");
         $("#lastName").setValue("Gump");
@@ -39,12 +40,15 @@ public class AutomationPracticeFormTest {
         $("[value='1900']").click();
         $(".react-datepicker__day--001").click();
 
-        $("#subjectsInput").setValue("Civics").pressEnter();
+        $("#subjectsInput").setValue("i");
+       // $("#react-select-2-option-3").click();
+       // $("[class='subjects-auto-complete__menu css-26l3qy-menu']").scrollTo();
+        $("#react-select-2-option-10").click();
 
         $("[for='hobbies-checkbox-1']").click();
 
         File file = new File("src/test/resources/scale_1200.jpg");
-        Selenide.$(byId("uploadPicture")).uploadFile(file);
+        $(byId("uploadPicture")).uploadFile(file);
 
         $("#currentAddress").setValue("OuterSpace");
 
@@ -60,16 +64,12 @@ public class AutomationPracticeFormTest {
 
     void checkTable() {
         $("#example-modal-sizes-title-lg").shouldBe(visible);
-        $(".table-responsive").shouldHave(text("Forrest"));
-        $(".table-responsive").shouldHave(text("Gump"));
-        $(".table-responsive").shouldHave(text("stupid@orsomething.com"));
-        $(".table-responsive").shouldHave(text("Other"));
-        $(".table-responsive").shouldHave(text("8800555353"));
-        $(".table-responsive").shouldHave(text("01 May,1900"));
-        $(".table-responsive").shouldHave(text("Civics"));
-        $(".table-responsive").shouldHave(text("Sports"));
-        $(".table-responsive").shouldHave(text("scale_1200.jpg"));
-        $(".table-responsive").shouldHave(text("OuterSpace"));
-        $(".table-responsive").shouldHave(text("Uttar Pradesh Lucknow"));
+        $(".table-responsive").shouldHave(text("Forrest"),text("Gump"),text("stupid@orsomething.com"),
+                text("Other"),text("8800555353"),
+                text("8800555353"),text("01 May,1900"),
+                text("Civics"),text("Sports"),
+                text("scale_1200.jpg"),text("OuterSpace"),
+                text("Uttar Pradesh Lucknow"));
+
     }
 }
