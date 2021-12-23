@@ -1,4 +1,4 @@
-package np.qa;
+package np.qa.lesson2;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
